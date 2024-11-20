@@ -34,11 +34,21 @@
     body {
       background-color: white;
       font-family: 'roboto', sans-serif;
-
-      color: #434343;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #676767;
 
       line-height: 1.6;
 
+    }
+
+    .experience-text,
+    .section-title,
+    .section-subtitle,
+    strong {
+      color: #434343;
     }
 
     /* Thanh cuộn mặc định trong suốt */
@@ -117,7 +127,7 @@
     }
     
     .logo img {
-      max-width: 100%;
+      max-width: 67%;
       max-height: 100%;
       object-fit: contain;
     }
@@ -186,7 +196,7 @@
     }
 
     .home-content {
-      width: 60%;
+      width: 80%;
       padding-right: 20px;
     }
 
@@ -195,6 +205,8 @@
       flex-direction: row;
       height: 100%;
       align-items: center;
+      padding: 0;
+      gap: 97px;
     }
 
     .home-image {
@@ -229,14 +241,14 @@
 
     .home-subtitle {
 
-      font-size: 38px;
+      font-size: 36.0pt;
 
       font-weight: normal;
 
       margin-bottom: 20px;
 
       line-height: 1.2;
-
+      text-align: start;
     }
 
     .home-description {
@@ -268,7 +280,9 @@
     /* Why aivoiz Section */
 
     #why-aivoiz {
+      background-color: #fbfbfb;
       padding: 50px 0;
+      width: 100%;
     }
 
     .section-title {
@@ -282,7 +296,7 @@
 
     .section-subtitle {
       margin-bottom: 50px;
-      font-size: 26px;
+      font-size: 20.0pt;
       font-weight: lighter;
     }
 
@@ -297,9 +311,10 @@
     }
 
     .stat-item {
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-
     }
 
     .stat-number {
@@ -314,8 +329,8 @@
     }
 
     .stat-description {
-
-
+      text-align: center;
+      width: 51%;
       color: #676767;
 
     }
@@ -360,7 +375,7 @@
 
     .experience-text {
       flex: 1;
-      font-size: 26px;
+      font-size: 20.0pt;
       font-weight: bold;
     }
 
@@ -550,8 +565,9 @@
     /* Features Section */
 
     #features {
+      background-color: #fbfbfb;
       padding: 50px 0;
-
+      width: 100%;
     }
 
     .features-grid {
@@ -628,7 +644,7 @@
     }
 
     .about-text strong {
-      color: #676767;
+      color: #434343;
     }
 
     .partner-program {
@@ -639,7 +655,7 @@
 
     .partner-program h3 {
       margin-bottom: 20px;
-      color: #676767;
+      color: #434343;
       font-size: 24px;
     }
 
@@ -655,7 +671,6 @@
       background-color: #ff9900;
       color: #fff;
       text-decoration: none;
-      font-weight: bold;
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
@@ -670,7 +685,7 @@
     footer {
 
       background-color: #ff9900;
-
+      width: 100%;
       color: white;
 
       padding: 30px 0;
@@ -705,7 +720,6 @@
     
 
     .footer-content {
-      font-weight: bold;
       line-height: 1.4;
     }
 
@@ -798,7 +812,7 @@
 
     .modal-title {
 
-      font-size: 24px;
+      font-size: 22px;
 
       margin-bottom: 20px;
 
@@ -808,6 +822,12 @@
 
       margin-bottom: 15px;
 
+    }
+
+    option,
+    select,
+    .form-group input::placeholder {
+      font-size: 13.0pt;
     }
 
     .form-group label {
@@ -1118,7 +1138,7 @@
 
     <div class="nav-container">
 
-      <div class="logo">\
+      <div class="logo">
         <img src="./media/logo.png" alt="Aivoiz">
       </div>
 
@@ -1183,7 +1203,7 @@
 
     <div class="container">
 
-      <h2 class="section-title" style="font-size: 38px;">A game changer</h2>
+      <h2 class="section-title" style="font-size: 36.0pt;">A game changer</h2>
 
       <h3 class="section-subtitle">for your cusomer service</h3>
 
@@ -1257,8 +1277,8 @@
 
         <div class="experience-text" style="font-weight: lighter;">
           Ready to align your business
-          <p style="margin: 0; font-size: 26px;">with these goals?</p>
-          Tap into <span style="color: #ff9900; font-size: 26px; font-weight: bold;">our expertise</span>!
+          <p style="margin: 0; font-size: 20.0pt; color: #434343;">with these goals?</p>
+          Tap into <span style="color: #ff9900; font-weight: bold;">our expertise</span>!
         </div>
       </div>
 
@@ -1281,8 +1301,8 @@
           <img src="./media/anh2.png" alt="Demo 1">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>24/7 Inbound Customer Support</strong></p>
-            <p><span style="font-weight: bold">Client</span>: Government Water Company</p>
-            <p><span style="font-weight: bold;">Language:</span> Vietnamese</p>
+            <p><span style="font-weight: bold;color: #434343;">Client</span>: Government Water Company</p>
+            <p><span style="font-weight: bold;color: #434343;">Language:</span> Vietnamese</p>
             <p>Support line assists customers with inquiries about procedures, complaints, and more, providing reliable
               assistance around the clock.</p>
             <audio id="audioSample" controls>
@@ -1364,45 +1384,45 @@
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-share-alt" font-size: 24px;"></i>
+          <i class="fas fa-share-alt" style="font-size: 24px;"></i>
           <p><strong>Omnichannel communication</strong></p>
-          <p>Seamless communication between different platforms...</p>
+          <p>Seamless communication between different platforms. Transition effortlessly between chat and voice, picking up conversations right where they left off</p>
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-bolt" font-size: 24px;"></i>
+          <i class="fas fa-bolt" style="font-size: 24px;"></i>
           <p><strong>Low latency</strong></p>
-          <p>Enjoy rapid replies with adjustable latency...</p>
+          <p>Enjoy rapid replies with adjustable latency, ensuring a smooth user experience</p>
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-hand-paper" font-size: 24px;"></i>
+          <i class="fas fa-hand-paper" style="font-size: 24px;"></i>
           <p><strong>Interruption logic</strong></p>
-          <p>Customers can interrupt AI agents, mimicking natural...</p>
+          <p>Customers can interrupt AI agents, mimicking natural human conversations for a more engaging interaction</p>
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-language" font-size: 24px;"></i>
+          <i class="fas fa-language" style="font-size: 24px;"></i>
           <p><strong>Switching between languages</strong></p>
-          <p>Effortlessly understand and switch between languages...</p>
+          <p>Effortlessly understand and switch between languages within a single dialogue</p>
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-plug" font-size: 24px;"></i>
+          <i class="fas fa-plug" style="font-size: 24px;"></i>
           <p><strong>API integration</strong></p>
-          <p>Our solution seamlessly connects with your existing...</p>
+          <p>Our solution seamlessly connects with your existing systems, including CRM, billing, and third-party SMS/messaging services</p>
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-cloud" font-size: 24px;"></i>
+          <i class="fas fa-cloud" style="font-size: 24px;"></i>
           <p><strong>Saas or on-premise</strong></p>
-          <p>We offer both cloud-based and on-premise solutions...</p>
+          <p>We offer both cloud-based and on-premise solutions to suit your</p>
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-phone-alt" font-size: 24px;"></i>
+          <i class="fas fa-phone-alt" style="font-size: 24px;"></i>
           <p><strong>Support webRTC</strong></p>
-          <p>Bring our GenAI agents directly into your application...</p>
+          <p>Bring our GenAI agents directly into your application, facilitating smooth chats and calls between AI agents and customers</p>
         </div>
 
       </div>
@@ -1436,7 +1456,7 @@
             as human agents, while liberating your team from routine tasks, allowing them to focus on more complex and
             creative challenges.
           <p>
-          <p style="margin: 20px 0;"><strong>An impressive 9x% of customers believe they’re conversing with a human when interacting with our
+          <p style="margin: 20px 0; color: #434343;"><strong>An impressive 9x% of customers believe they’re conversing with a human when interacting with our
               bot!</strong></p>
           <p>Our key method is to duplicate your top performed human agents to hundreds or thousands of AI bots,
             ensuring your business targets are consistently met. This approach allows us to quickly and seamlessly
@@ -1449,7 +1469,7 @@
 
       <div class="partner-program">
 
-        <h3>Partner program</h3>
+        <h3 style="font-size: 17.33px; color: #434343;">Partner program</h3>
 
         <p style="margin-bottom: 20px;">Join us in leading the way in distributing cutting-edge technology! With our
           global expansion, we invite you
@@ -1458,7 +1478,7 @@
           Together, we’ll work closely to help you secure those deals. Your success is our success - let’s achieve
           greatness together!</p>
 
-        <a href="#" class="book-demo-btn" style="background-color: transparent; color:#434343;border:1px solid #434343;">Become our partner</a>
+        <a href="#" class="book-demo-btn">Become our partner</a>
 
       </div>
 
@@ -1518,7 +1538,7 @@
 
       <span class="close">&times;</span>
 
-      <h2 class="modal-title">Your AI agents starts here</h2>
+      <h2 class="modal-title" style="color: #434343;">Your AI agents starts here</h2>
 
       <form target="_blank" action="https://formsubmit.co/hello@aivoiz.com" method="POST" id="bookDemoForm">
 
@@ -1608,10 +1628,8 @@
 
         <div class="form-group">
 
-          <label for="agents">Number of agents</label>
-
           <select id="agents" name="agents" required>
-            <option value="solo">Solo</option>
+            <option value="" disabled selected style="display: none;">Number of agents</option>
             <option value="1-50">1-50 agents</option>
             <option value="50-100">50-100 agents</option>
             <option value="100-300">100-300 agents</option>
@@ -1937,11 +1955,13 @@
 
     updateDots(currentIndex);
 
+    // Case study carousel
+
     const Caseitems = document.querySelectorAll('.Casecarousel-item');
     const Casedots = document.querySelectorAll('.Casedot');
     let CasecurrentIndex = 0;
 
-    function goToSlide(index) {
+    function CasegoToSlide(index) {
       CasecurrentIndex = index;
       const carouselContainer = document.querySelector('.Casecarousel-container');
       carouselContainer.style.transform = `translateX(-${CasecurrentIndex * 100}%)`;
@@ -1955,7 +1975,7 @@
     }
 
     Casedots.forEach((dot, index) => {
-      dot.addEventListener('click', () => goToSlide(index));
+      dot.addEventListener('click', () => CasegoToSlide(index));
     });
 
     updateCaseDots();
@@ -1964,11 +1984,11 @@
 
     document.addEventListener('scroll', () => {
       document.body.classList.add('scroll-active');
-
+      
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         document.body.classList.remove('scroll-active');
-      }, 5000);
+      }, 1000);
     });
 
 
