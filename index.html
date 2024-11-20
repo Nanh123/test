@@ -139,10 +139,10 @@
       display: flex;
 
       align-items: center;
-
     }
 
     .nav-links a {
+      font-size: 13.0pt;
 
       color: #434343;
 
@@ -150,7 +150,6 @@
 
       margin-left: 20px;
 
-      font-size: 15px;
 
     }
 
@@ -197,7 +196,7 @@
     }
 
     .home-content {
-      width: 80%;
+      width: 100%;
       padding-right: 20px;
     }
 
@@ -289,7 +288,7 @@
 
     .section-title {
       font-size: 40px;
-      margin-top: 100px;
+      margin-top: 53px;
 
       font-weight: bold;
 
@@ -297,7 +296,6 @@
     }
 
     .section-subtitle {
-      margin-bottom: 50px;
       font-size: 20.0pt;
       font-weight: normal;
     }
@@ -309,7 +307,7 @@
       justify-content: space-between;
 
       margin: 50px 0;
-
+      gap: 15px;
     }
 
     .stat-item {
@@ -317,7 +315,26 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      flex: 1;
+      
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.08);
+
+      padding: 20px;
+      background-color: #fff;
+
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
 
     .stat-number {
 
@@ -384,12 +401,11 @@
     .experience-carousel {
       flex: 1;
       position: relative;
-      height: 160px;
+      height: 140px;
       overflow: hidden;
       width: 470px;
       align-items: end;
       align-self: flex-end;
-      /* Aligns carousel to the right side */
     }
 
     .carousel-container {
@@ -408,9 +424,10 @@
       align-items: center;
     }
 
-
-    .carousel-item img {
-      width: 10%;
+    .expec-title {
+      width: 56%;
+      text-align: center;
+      margin-bottom: 15px;
     }
 
     .carousel-dots {
@@ -585,11 +602,11 @@
     }
 
     .feature-item i {
-      border: 1px solid #666b80;
+      border: 1px solid #434343;
       padding: 15px;
       border-radius: 15px;
       margin-bottom: 10px;
-      color: #666b80;
+      color: #434343;
     }
 
     /* About Section */
@@ -620,12 +637,10 @@
     }
 
     .about-image img {
-      margin-top: 50px;
+      margin-top: 25px;
       width: 66%;
       border-radius: 10px;
-      /* Bo góc hình ảnh */
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      /* Hiệu ứng đổ bóng nhẹ */
     }
 
     .about-image p {
@@ -829,7 +844,7 @@
     option,
     select,
     .form-group input::placeholder {
-      font-size: 13.0pt;
+      font-size: 15px;
     }
 
     .form-group label {
@@ -910,6 +925,13 @@
     @media (max-width: 768px) {
       * {
         text-align: start;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       #home .container {
@@ -1129,6 +1151,16 @@
       .icon {
         margin-top: 10px;
       }
+
+      .stats {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+      }
+    
+      .stat-item {
+        width: 90%;
+      }
     }
   </style>
 
@@ -1237,7 +1269,7 @@
 
           <div class="stat-number">up to 50%</div>
 
-          <div class="stat-description">cutting down on customer service operation cost</div>
+          <div class="stat-description">cutting down on operation cost</div>
 
         </div>
 
@@ -1259,7 +1291,8 @@
                 industries.</p>
             </div>
             <div class="carousel-item">
-              <p>Projects in <span style="color: #434343; font-weight: bold;;">English, Hindi, Japanese, Bahasa,
+              <p class="expec-title">Projects in <span style="color: #434343; font-weight: bold;;">English, Hindi,
+                  Japanese, Bahasa,
                   Vietnamese, etc</span></p>
               <p>Local insights that enable rapid scaling to new languages.</p>
             </div>
@@ -1282,7 +1315,7 @@
         <div class="experience-text" style="font-weight: normal;">
           Ready to align your business
           <p style="margin: 0; font-size: 20.0pt; color: #434343;">with these goals?</p>
-          Tap into <span style="color: #ff9900; font-weight: bold;">our expertise</span>!
+          Tap into <span style="color: #ff9900; font-weight: bold; font-size: 20.0pt;">our expertise</span>!
         </div>
       </div>
 
@@ -1294,7 +1327,7 @@
   <section id="case-study">
     <div class="container">
       <h3 class="section-title" style="color: #434343;">Experience the power of our product -<br>
-        <span style="color: #ff9900; font-size: 38px; font-weight:bold;">Let its performance do the talking!</span>
+        <span style="color: #ff9900; font-size: 36.0pt; font-weight:bold;">Let its performance do the talking!</span>
       </h3>
     </div>
 
@@ -1321,8 +1354,8 @@
           <img src="./media/anh3.png" alt="Demo 2">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>Outbound Calls for Loan Packages</strong></p>
-            <p><span style="font-weight: bold">Client</span>: Financing Company</p>
-            <p><span style="font-weight: bold;">Language:</span> English</p>
+            <p><span style="font-weight: bold; color: #434343;">Client</span>: Financing Company</p>
+            <p><span style="font-weight: bold; color: #434343;">Language:</span> English</p>
             <p>Reaching out to potential customers to discuss available loan packages, ensuring a seamless experience.
             </p>
             <audio id="audioSample" controls>
@@ -1337,8 +1370,8 @@
           <img src="./media/anh4.png" alt="Demo 3">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>Outbound Promotion Campaigns</strong></p>
-            <p><span style="font-weight: bold">Client</span>: Delivery Company</p>
-            <p><span style="font-weight: bold;">Language:</span> Hindi</p>
+            <p><span style="font-weight: bold; color: #434343;">Client</span>: Delivery Company</p>
+            <p><span style="font-weight: bold; color: #434343;">Language:</span> Hindi</p>
             <p>Engaging existing customers with enticing discount offers, driving increased delivery orders and
               enhancing customer loyalty.</p>
             <audio id="audioSample" controls>
@@ -1353,8 +1386,8 @@
           <img src="./media/anh5.png" alt="Demo 4">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>Inbound Information Retrieval for Sales Follow-Up</strong></p>
-            <p><span style="font-weight: bold">Client</span>: Insurance Company</p>
-            <p><span style="font-weight: bold;">Language:</span> Japanese</p>
+            <p><span style="font-weight: bold; color: #434343;">Client</span>: Insurance Company</p>
+            <p><span style="font-weight: bold; color: #434343;">Language:</span> Japanese</p>
             <p>Inbound calls to gather customer information, enabling sales representatives to provide tailored
               consultations promptly.</p>
             <audio id="audioSample" controls>
@@ -1378,8 +1411,9 @@
 
   <section id="features">
     <div class="container">
-      <h2 class="section-title" style="margin-bottom: 100px; font-size:38px;"><span
-          style="color: #434343; font-weight: normal;font-size:26px;">What makes</span> our product stand out</h2>
+      <h2 class="section-title" style="margin-bottom: 50px; font-size: 36.0pt;">
+        <p style="color: #434343; font-weight: normal;font-size:26px;">What makes</p> our product stand out
+      </h2>
       <div class="features-grid">
 
         <div class="feature-item">
@@ -1428,7 +1462,7 @@
         </div>
 
         <div class="feature-item">
-          <i class="fas fa-phone-alt" style="font-size: 24px;"></i>
+          <i class="fa-solid fa-mobile-screen" style="font-size: 24px;"></i>
           <p><strong>Support webRTC</strong></p>
           <p>Bring our GenAI agents directly into your application, facilitating smooth chats and calls between AI
             agents and customers</p>
@@ -1441,8 +1475,10 @@
 
 
   <section id="about">
-
-    <div class="container" style="margin-top: 120px;">
+    <p class="section-title" style="font-size: 26px; color: #434343;">
+      Our Story
+    </p>
+    <div class="container" style="margin-top: 40px;">
 
       <div class="about-content">
 
@@ -1534,7 +1570,7 @@
             <img src="./media/linkedin.png" alt="Linkedin">
           </a>
           <a href="mailto:hello@aivoiz.com">
-            <img src="./media/email.png" alt="Email" style="width: 40px;">
+            <img src="./media/email.png" alt="Email" style="width: 38.5px;">
           </a>
         </div>
       </div>
@@ -1929,42 +1965,44 @@
     const items = document.querySelectorAll('.carousel-item');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
+    let intervalId;
 
     function goToNextSlide() {
       currentIndex = (currentIndex + 1) % items.length;
+      updateCarousel();
+    }
 
+    function updateCarousel() {
       const carouselContainer = document.querySelector('.carousel-container');
       carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-      updateDots(currentIndex);
-    }
-
-    function updateDots(index) {
-      const validIndex = index % dots.length;
-      currentIndex = -1;
-
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[validIndex].classList.add('active');
-    }
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        moveToSlide(index);
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
       });
-    });
+    }
 
     function moveToSlide(index) {
       currentIndex = index;
-
-      const carouselContainer = document.querySelector('.carousel-container');
-      carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-      updateDots(currentIndex);
+      updateCarousel();
+      restartAutoSlide();
     }
 
-    setInterval(goToNextSlide, 5000);
+    function startAutoSlide() {
+      intervalId = setInterval(goToNextSlide, 1000000);
+    }
 
-    updateDots(currentIndex);
+    function restartAutoSlide() {
+      clearInterval(intervalId);
+      startAutoSlide();
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => moveToSlide(index));
+    });
+
+    startAutoSlide();
+    updateCarousel();
+
 
     // Case study carousel
 
