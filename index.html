@@ -28,6 +28,7 @@
     }
 
     a {
+      user-select: none;
       text-decoration: none;
     }
 
@@ -125,13 +126,13 @@
       align-items: center;
       justify-content: center;
     }
-    
-    .logo img {
+
+    .logo a img {
       max-width: 67%;
       max-height: 100%;
       object-fit: contain;
     }
-    
+
 
     .nav-links {
 
@@ -219,14 +220,15 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .home-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: inherit; /* Áp dụng bo tròn giống như div */
+      border-radius: inherit;
+      /* Áp dụng bo tròn giống như div */
     }
-    
+
 
     .home-title {
 
@@ -711,13 +713,13 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .footer_logo img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
     }
-    
+
 
     .footer-content {
       line-height: 1.4;
@@ -1139,7 +1141,9 @@
     <div class="nav-container">
 
       <div class="logo">
-        <img src="./media/logo.png" alt="Aivoiz">
+        <a href="#home">
+          <img src="./media/logo.png" alt="Aivoiz">
+        </a>
       </div>
 
       <div class="menu-toggle">☰</div>
@@ -1374,7 +1378,8 @@
 
   <section id="features">
     <div class="container">
-      <h2 class="section-title" style="margin-bottom: 100px; font-size:38px;"><span style="color: #434343; font-weight: normal;font-size:26px;">What makes</span> our product stand out</h2>
+      <h2 class="section-title" style="margin-bottom: 100px; font-size:38px;"><span
+          style="color: #434343; font-weight: normal;font-size:26px;">What makes</span> our product stand out</h2>
       <div class="features-grid">
 
         <div class="feature-item">
@@ -1386,7 +1391,8 @@
         <div class="feature-item">
           <i class="fas fa-share-alt" style="font-size: 24px;"></i>
           <p><strong>Omnichannel communication</strong></p>
-          <p>Seamless communication between different platforms. Transition effortlessly between chat and voice, picking up conversations right where they left off</p>
+          <p>Seamless communication between different platforms. Transition effortlessly between chat and voice, picking
+            up conversations right where they left off</p>
         </div>
 
         <div class="feature-item">
@@ -1398,7 +1404,8 @@
         <div class="feature-item">
           <i class="fas fa-hand-paper" style="font-size: 24px;"></i>
           <p><strong>Interruption logic</strong></p>
-          <p>Customers can interrupt AI agents, mimicking natural human conversations for a more engaging interaction</p>
+          <p>Customers can interrupt AI agents, mimicking natural human conversations for a more engaging interaction
+          </p>
         </div>
 
         <div class="feature-item">
@@ -1410,7 +1417,8 @@
         <div class="feature-item">
           <i class="fas fa-plug" style="font-size: 24px;"></i>
           <p><strong>API integration</strong></p>
-          <p>Our solution seamlessly connects with your existing systems, including CRM, billing, and third-party SMS/messaging services</p>
+          <p>Our solution seamlessly connects with your existing systems, including CRM, billing, and third-party
+            SMS/messaging services</p>
         </div>
 
         <div class="feature-item">
@@ -1422,7 +1430,8 @@
         <div class="feature-item">
           <i class="fas fa-phone-alt" style="font-size: 24px;"></i>
           <p><strong>Support webRTC</strong></p>
-          <p>Bring our GenAI agents directly into your application, facilitating smooth chats and calls between AI agents and customers</p>
+          <p>Bring our GenAI agents directly into your application, facilitating smooth chats and calls between AI
+            agents and customers</p>
         </div>
 
       </div>
@@ -1456,7 +1465,8 @@
             as human agents, while liberating your team from routine tasks, allowing them to focus on more complex and
             creative challenges.
           <p>
-          <p style="margin: 20px 0; color: #434343;"><strong>An impressive 9x% of customers believe they’re conversing with a human when interacting with our
+          <p style="margin: 20px 0; color: #434343;"><strong>An impressive 9x% of customers believe they’re conversing
+              with a human when interacting with our
               bot!</strong></p>
           <p>Our key method is to duplicate your top performed human agents to hundreds or thousands of AI bots,
             ensuring your business targets are consistently met. This approach allows us to quickly and seamlessly
@@ -1718,7 +1728,8 @@
 
             </select>
 
-            <input type="tel" id="partnerPhone" name="partnerPhone" placeholder="Phone Number" required style="width: 80%;">
+            <input type="tel" id="partnerPhone" name="partnerPhone" placeholder="Phone Number" required
+              style="width: 80%;">
 
           </div>
 
@@ -1984,7 +1995,7 @@
 
     document.addEventListener('scroll', () => {
       document.body.classList.add('scroll-active');
-      
+
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         document.body.classList.remove('scroll-active');
