@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./media/favicon.png" type="image/x-icon">
+  <title>GenAI Agents</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=roboto:wght@400;700&family=Arial:wght@700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+      color: #676767;
+      text-align: justify;
+      font-size: 13.0pt;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      background-color: white;
+      font-family: 'roboto', sans-serif;
+
+      color: #434343;
+
+      line-height: 1.6;
+
+    }
+
+    /* Thanh cuộn mặc định trong suốt */
+    body::-webkit-scrollbar {
+      width: 8px;
+      background-color: transparent;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Hiển thị màu khi cuộn */
+    body.scroll-active::-webkit-scrollbar-thumb {
+      background-color: #888;
+    }
+
+    body.scroll-active::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+
+
+    .container {
+
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      padding: 0 20px;
+
+    }
+
+    /* Navigation */
+
+    nav {
+
+      background-color: white;
+
+      position: fixed;
+
+      width: 100%;
+
+      top: 0;
+
+      left: 0;
+
+      z-index: 1000;
+
+
+    }
+
+    .nav-container {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 10px 20px;
+
+    }
+
+    .logo {
+      background-image: url("./media/logo.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 100px;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+    .nav-links a {
+
+      color: #434343;
+
+      text-decoration: none;
+
+      margin-left: 20px;
+
+      font-size: 15px;
+
+    }
+
+    .nav-links a:last-child {
+      color: white;
+    }
+
+    .book-demo-btn-opening,
+    .book-demo-btn {
+
+      background-color: #ff9900;
+
+      color: white;
+
+      padding: 10px 20px;
+
+      border-radius: 5px;
+
+      text-decoration: none;
+
+      font-size: 15px;
+
+
+    }
+
+    .menu-toggle {
+
+      display: none;
+
+      font-size: 24px;
+
+      cursor: pointer;
+
+    }
+
+    /* Home Section */
+
+    #home {
+      padding: 100px 0 50px;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: space-between;
+    }
+
+    .home-content {
+      width: 60%;
+      padding-right: 20px;
+    }
+
+    #home .container {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      align-items: center;
+    }
+
+    .home-image {
+      background-image: url('./media/ảnh 1.jpg');
+      background-size: cover;
+      border-radius: 30px;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+      max-width: 600px;
+      height: 395px;
+      overflow: hidden;
+    }
+
+    .home-title {
+
+      font-family: 'Arial', sans-serif;
+
+      font-size: 70px;
+
+      font-weight: bold;
+
+      color: #ff9900;
+    }
+
+    .home-subtitle {
+
+      font-size: 38px;
+
+      font-weight: normal;
+
+      margin-bottom: 20px;
+
+      line-height: 1.2;
+
+    }
+
+    .home-description {
+
+      font-size: 13.0pt;
+
+      color: #676767;
+
+      margin-bottom: 30px;
+
+    }
+
+    .home-cta {
+
+      display: flex;
+
+      align-items: center;
+
+    }
+
+    .play-icon {
+
+      margin-right: 10px;
+
+      font-size: 24px;
+
+    }
+
+    /* Why aivoiz Section */
+
+    #why-aivoiz {
+      padding: 50px 0;
+    }
+
+    .section-title {
+      font-size: 40px;
+      margin-top: 100px;
+
+      font-weight: bold;
+
+      color: #ff9900;
+    }
+
+    .section-subtitle {
+      margin-bottom: 50px;
+      font-size: 26px;
+      font-weight: lighter;
+    }
+
+    .stats {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      margin: 50px 0;
+
+    }
+
+    .stat-item {
+
+      text-align: center;
+
+    }
+
+    .stat-number {
+
+      font-size: 26px;
+
+      font-weight: bold;
+
+      color: #ff9900;
+      text-align: center;
+
+    }
+
+    .stat-description {
+
+
+      color: #676767;
+
+    }
+
+    /*.experience-carousel {
+
+      width: 50%;
+
+      overflow: hidden;
+
+    }
+
+    .carousel-container {
+
+      display: flex;
+
+      transition: transform 0.5s ease;
+
+    }
+
+    .carousel-item {
+
+      flex: 0 0 100%;
+
+      padding: 20px;
+
+    }
+
+    .carousel-item img {
+
+      max-width: 100%;
+
+      height: auto;
+
+    } */
+    .experience-section {
+      display: flex;
+      flex-direction: row-reverse;
+      margin: 50px 0;
+      gap: 10%;
+    }
+
+    .experience-text {
+      flex: 1;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .experience-carousel {
+      flex: 1;
+      position: relative;
+      height: 160px;
+      overflow: hidden;
+      width: 470px;
+      align-items: end;
+      align-self: flex-end;
+      /* Aligns carousel to the right side */
+    }
+
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      margin-bottom: 20px;
+      font-size: 13.0pt;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    .carousel-item img {
+      width: 10%;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #717171;
+    }
+
+    .dot:hover {
+      background-color: #717171;
+    }
+
+
+    /* Case Study Section */
+
+    #case-study {
+      padding: 50px 0;
+    }
+
+    #case-study h3 {
+      font-weight: lighter;
+      font-size: 26px;
+    }
+
+    #case-study .container {
+      margin-bottom: 50px;
+    }
+
+    .case-study-carousel {
+      position: relative;
+      width: 90%;
+      margin: 0 auto;
+      max-width: 1200px;
+      overflow: hidden;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .Casecarousel-container {
+      display: flex;
+      margin-bottom: 30px;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .Casecarousel-item {
+      min-width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      gap: 5%;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13.0pt;
+    }
+
+    .Casecarousel-item img {
+      flex: 1.2;
+      max-width: 50%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .case-study-details {
+      flex: 1;
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .case-study-details p:nth-child(4) {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+
+    .Casecarousel-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .Casedot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .Casedot.active {
+      background-color: #ff9900;
+    }
+
+
+    audio {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .Casecarousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .Casedot {
+      width: 12px;
+      height: 12px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .Casedot.active {
+      background-color: #676767;
+    }
+
+    .Casedot:hover {
+      background-color: #676767;
+    }
+
+
+
+    /* Features Section */
+
+    #features {
+      padding: 50px 0;
+
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 65px;
+      margin-top: 20px;
+    }
+
+    .feature-item {
+      box-sizing: border-box;
+      color: black;
+    }
+
+    .feature-item i {
+      border: 1px solid #666b80;
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      color: #666b80;
+    }
+
+    /* About Section */
+
+    #about {
+      padding: 50px 20px;
+      /* Màu nền nhẹ để phân biệt với các phần khác */
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      /* Màu chữ dễ đọc */
+    }
+
+    .about-content {
+      display: flex;
+      align-items: flex-start;
+      /* Căn chỉnh nội dung theo đầu dòng */
+      gap: 40px;
+      /* Khoảng cách giữa ảnh và văn bản */
+      flex-wrap: wrap;
+      /* Đảm bảo hiển thị tốt trên màn hình nhỏ */
+    }
+
+    .about-image {
+      width: 30%;
+      /* Giới hạn chiều rộng của ảnh */
+      text-align: center;
+      /* Căn giữa văn bản dưới ảnh */
+    }
+
+    .about-image img {
+      margin-top: 50px;
+      width: 66%;
+      border-radius: 10px;
+      /* Bo góc hình ảnh */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      /* Hiệu ứng đổ bóng nhẹ */
+    }
+
+    .about-image p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #434343;
+    }
+
+    .about-text {
+      width: 66%;
+      line-height: 1.8;
+      font-size: 16px;
+      padding-left: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+    }
+
+    .about-text strong {
+      color: #676767;
+    }
+
+    .partner-program {
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .partner-program h3 {
+      margin-bottom: 20px;
+      color: #676767;
+      font-size: 24px;
+    }
+
+    .partner-program p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .book-demo-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff9900;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .book-demo-btn:hover {
+      background-color: #ff7700;
+    }
+
+
+    /* Footer */
+
+    footer {
+
+      background-color: #ff9900;
+
+      color: white;
+
+      padding: 30px 0;
+      display: flex;
+      margin: 0 auto;
+    }
+
+    footer .footer-body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    footer p {
+      color: white;
+    }
+
+    .footer_logo {
+      background-image: url("./media/logo_white.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 80px;
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .footer-content {
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .footer-content .text {
+      flex: 1;
+    }
+
+    .footer-body .icon {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-body .icon img {
+      width: 50px;
+      height: auto;
+    }
+
+    .footer-content .icon a {
+      display: flex;
+      align-items: center;
+    }
+
+
+    /* Modal */
+
+    .modal {
+
+      display: none;
+
+      position: fixed;
+
+      z-index: 2000;
+
+      left: 0;
+
+      top: 0;
+
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+
+      background-color: rgba(0, 0, 0, 0.4);
+
+    }
+
+    .modal-content {
+
+      background-color: #fefefe;
+
+      margin: 15% auto;
+      margin-top: 5%;
+
+      padding: 20px;
+
+      border: 1px solid #888;
+
+      width: 80%;
+
+      max-width: 500px;
+
+    }
+
+    .close {
+
+      color: #aaa;
+
+      float: right;
+
+      font-size: 28px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+    }
+
+    .close:hover,
+
+    .close:focus {
+
+      color: black;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+    }
+
+    .modal-title {
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .form-group {
+
+      margin-bottom: 15px;
+
+    }
+
+    .form-group label {
+
+      display: block;
+
+      margin-bottom: 5px;
+
+    }
+
+    .form-group input,
+
+    .form-group select {
+
+      width: 100%;
+
+      padding: 8px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 4px;
+
+    }
+
+    .submit-btn {
+
+      background-color: #ff9900;
+
+      color: white;
+
+      padding: 10px 20px;
+
+      border: none;
+
+      border-radius: 5px;
+
+      font-size: 15px;
+
+      cursor: pointer;
+
+      display: block;
+
+      margin: 20px auto 0;
+
+    }
+
+    #contact input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    #contact input:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    #contact .container button {
+      background-color: transparent;
+      padding: 10px 30px;
+      border: 1px solid #676767;
+      border-radius: 10px;
+      color: #434343;
+      cursor: pointer;
+    }
+
+    #contact .container button:hover {
+      background-color: #ff9900;
+      color: white;
+    }
+
+    /* Responsive Design */
+
+    @media (max-width: 768px) {
+      * {
+        text-align: start;
+      }
+
+      #home .container {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .home-image {
+        width: 100px;
+      }
+
+      .nav-links {
+
+        display: none;
+
+        flex-direction: column;
+
+        position: absolute;
+
+        top: 60px;
+
+        left: 0;
+
+        width: 100%;
+
+        background-color: white;
+
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      }
+
+      .nav-links.active {
+
+        display: flex;
+
+      }
+
+      .nav-links a {
+
+        margin: 10px 0;
+
+      }
+
+      .menu-toggle {
+
+        display: block;
+
+      }
+
+      .home-content,
+
+      .home-image {
+
+        width: 100%;
+
+      }
+
+      .experience-section {
+        flex-direction: column-reverse;
+
+      }
+
+      #why-avoiz {
+        padding: 0;
+      }
+
+      .experience-carousel {
+        padding-bottom: 10px;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .section-title {
+        margin-top: 10%;
+      }
+
+      .about-text {
+        padding-left: 0px;
+      }
+
+      .experience-text,
+
+      .experience-carousel,
+
+      .about-image,
+
+      .about-text {
+
+        width: 100%;
+
+      }
+
+      .about .container {
+        margin-top: 10%;
+      }
+
+      .Casecarousel-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .case-study-item {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 80%;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .case-study-image,
+      .case-study-content {
+        width: 100%;
+      }
+
+      .case-study-carousel {
+        width: 80%;
+      }
+
+      .case-study-content {
+        max-width: 600px;
+        text-align: center;
+        overflow-wrap: break-word;
+      }
+
+      .case-study-details {
+        word-break: break-word;
+        overflow: visible;
+        padding-bottom: 10%;
+      }
+
+      .Casecarousel-item img {
+        max-width: 100%;
+      }
+
+      .Casecarousel-item {
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      /* General styles */
+      footer {
+        background-color: #ff9900;
+        color: white;
+        padding: 20px 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      .footer-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-content .text {
+        margin-top: 10px;
+      }
+
+      .footer_logo {
+        width: 100px;
+        height: 100px;
+        background: url('./media/logo_white.png') no-repeat center/contain;
+      }
+
+      .icon {
+        display: flex;
+        gap: 15px;
+      }
+
+      .icon img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s;
+      }
+
+      .icon img:hover {
+        transform: scale(1.1);
+      }
+
+      .footer-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-content {
+        align-items: center;
+      }
+
+      .footer-content .text {
+        margin-top: 5px;
+      }
+
+      .icon {
+        margin-top: 10px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+
+    <div class="nav-container">
+
+      <div class="logo"></div>
+
+      <div class="menu-toggle">☰</div>
+
+      <div class="nav-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#why-aivoiz">Why aivoiz</a>
+
+        <a href="#case-study">Case study</a>
+
+        <a href="#features">Features</a>
+
+        <a href="#about">About</a>
+
+        <a href="#contact" id="contact">Contact</a>
+
+        <a href="#" class="book-demo-btn">Book a demo</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <section id="home">
+
+    <div class="container">
+      <div class="home-content">
+        <h1 class="home-title">GenAI agents</h1>
+        <h2 class="home-subtitle" style="color:#434343;">in voice & chat<br>human-like & multilingual</h2>
+        <p class="home-description">
+          Accelerate your business by transforming<br>
+          your communication with customers.<br>
+          Don't wait, innovate!<br>
+          Outperform your competitors by starting with us!
+        </p>
+        <div class="home-cta">
+          <span class="play-icon" onclick="playAudio()" style="cursor: pointer;">
+            <i class="fa-regular fa-circle-play" style="color: #434343;font-size: 30px;"></i>
+          </span>
+          <span>Dialogue sample</span>
+          <audio id="audioSample" style="display:none;" controls>
+            <source src="./media/audio 1 EN.mp3" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <a href="#" class="book-demo-btn-opening" style="margin-left: 20px;">Book a demo</a>
+        </div>
+      </div>
+
+      <div class="home-image"></div>
+    </div>
+
+
+  </section>
+
+  <section id="why-aivoiz">
+
+    <div class="container">
+
+      <h2 class="section-title" style="font-size: 38px;">A game changer</h2>
+
+      <h3 class="section-subtitle">for your cusomer service</h3>
+
+      <p>Our advanced technology enables seamless communication in voice and chat, 24/7, across all platforms - whether
+        it’s contact centers, websites, or apps. Enhance your ability to reach and support customers quickly and
+        efficiently, all while significantly reducing costs.</p>
+
+      <div class="stats">
+
+        <div class="stat-item">
+
+          <div class="stat-number">up to 80%</div>
+
+          <div class="stat-description">customer interactions handled by AI agents</div>
+
+        </div>
+
+        <div class="stat-item">
+
+          <div class="stat-number">+20%</div>
+
+          <div class="stat-description">conversion rate increased compared to human agents</div>
+
+        </div>
+
+        <div class="stat-item">
+
+          <div class="stat-number">up to 50%</div>
+
+          <div class="stat-description">cutting down on customer service operation cost</div>
+
+        </div>
+
+      </div>
+
+      <div class="experience-section">
+        <div class="experience-carousel">
+          <div class="carousel-container">
+            <div class="carousel-item">
+              <p class="expec-title">Experience in <span style="color: #434343; font-weight: bold;">inbound/outbound &
+                  AI assistants</span></p>
+              <p class="expec-text">We tailor bots for telesales, NPS, debt collection, customer support, and beyond. We
+                also design highly
+                complex AI phone assistants.</p>
+            </div>
+            <div class="carousel-item">
+              <p class="expec-title" style="color: #434343; font-weight: bold;">150k+ conversations/day</p>
+              <p class="expec-text">Leverage our proven expertise in managing high traffic for clients across various
+                industries.</p>
+            </div>
+            <div class="carousel-item">
+              <p>Projects in <span style="color: #434343; font-weight: bold;;">English, Hindi, Japanese, Bahasa,
+                  Vietnamese, etc</span></p>
+              <p>Local insights that enable rapid scaling to new languages.</p>
+            </div>
+            <div class="carousel-item">
+              <p class="expec-title" style="color: #434343; font-weight: bold;">100+ languages</p>
+              <p class="expec-text">Our bots effortlessly switch between languages, making them perfect for multilingual
+                contact centers.
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-dots">
+            <span class="dot" onclick="moveToSlide(0)"></span>
+            <span class="dot" onclick="moveToSlide(1)"></span>
+            <span class="dot" onclick="moveToSlide(2)"></span>
+            <span class="dot" onclick="moveToSlide(3)"></span>
+          </div>
+        </div>
+
+        <div class="experience-text" style="font-weight: lighter;">
+          Ready to align your business
+          <p style="margin: 0; font-size: 26px;">with these goals?</p>
+          Tap into <span style="color: #ff9900; font-size: 26px; font-weight: bold;">our expertise</span>!
+        </div>
+      </div>
+
+
+    </div>
+
+  </section>
+
+  <section id="case-study">
+    <div class="container">
+      <h3 class="section-title" style="color: #434343;">Experience the power of our product -<br>
+        <span style="color: #ff9900; font-size: 38px; font-weight:bold;">Let its performance do the talking!</span>
+      </h3>
+    </div>
+
+    <div class="case-study-carousel">
+      <div class="Casecarousel-container">
+        <!-- Case Study 1 -->
+        <div class="Casecarousel-item">
+          <img src="./media/ảnh 2.jpg" alt="Demo 1">
+          <div class="case-study-details">
+            <p style="color: #ff9900;"><strong>24/7 Inbound Customer Support</strong></p>
+            <p><span style="font-weight: bold">Client</span>: Government Water Company</p>
+            <p><span style="font-weight: bold;">Language:</span> Vietnamese</p>
+            <p>Support line assists customers with inquiries about procedures, complaints, and more, providing reliable
+              assistance around the clock.</p>
+            <audio id="audioSample" controls>
+              <source src="./media/audio 2 - Vietnamese inbound.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="Casecarousel-item">
+          <img src="./media/ảnh 3.jpg" alt="Demo 2">
+          <div class="case-study-details">
+            <p style="color: #ff9900;"><strong>Outbound Calls for Loan Packages</strong></p>
+            <p><span style="font-weight: bold">Client</span>: Financing Company</p>
+            <p><span style="font-weight: bold;">Language:</span> English</p>
+            <p>Reaching out to potential customers to discuss available loan packages, ensuring a seamless experience.
+            </p>
+            <audio id="audioSample" controls>
+              <source src="./media/audio 1 EN.mp3" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="Casecarousel-item">
+          <img src="./media/ảnh 4.JPG" alt="Demo 3">
+          <div class="case-study-details">
+            <p style="color: #ff9900;"><strong>Outbound Promotion Campaigns</strong></p>
+            <p><span style="font-weight: bold">Client</span>: Delivery Company</p>
+            <p><span style="font-weight: bold;">Language:</span> Hindi</p>
+            <p>Engaging existing customers with enticing discount offers, driving increased delivery orders and
+              enhancing customer loyalty.</p>
+            <audio id="audioSample" controls>
+              <source src="./media/audio 3 - Hindi telesales.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+
+        <!-- Case Study 4 -->
+        <div class="Casecarousel-item">
+          <img src="./media/ảnh 5.jpg" alt="Demo 4">
+          <div class="case-study-details">
+            <p style="color: #ff9900;"><strong>Inbound Information Retrieval for Sales Follow-Up</strong></p>
+            <p><span style="font-weight: bold">Client</span>: Insurance Company</p>
+            <p><span style="font-weight: bold;">Language:</span> Japanese</p>
+            <p>Inbound calls to gather customer information, enabling sales representatives to provide tailored
+              consultations promptly.</p>
+            <audio id="audioSample" controls>
+              <source src="./media/audio 4 - Japanese inbound.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel navigation dots -->
+      <div class="Casecarousel-dots">
+        <span class="Casedot"></span>
+        <span class="Casedot"></span>
+        <span class="Casedot"></span>
+        <span class="Casedot"></span>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom: 100px; font-size:38px;"><span style="color: #434343; font-weight:lighter;font-size:26px;">What makes</span> our product stand out</h2>
+      <div class="features-grid">
+
+        <div class="feature-item">
+          <i class="fas fa-comments" style="font-size: 24px;"></i>
+          <p><strong>Natural conversation</strong></p>
+          <p>Our bot engages customers with lifelike voices, expertly handling a variety of questions and objections</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-share-alt" font-size: 24px;"></i>
+          <p><strong>Omnichannel communication</strong></p>
+          <p>Seamless communication between different platforms...</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-bolt" font-size: 24px;"></i>
+          <p><strong>Low latency</strong></p>
+          <p>Enjoy rapid replies with adjustable latency...</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-hand-paper" font-size: 24px;"></i>
+          <p><strong>Interruption logic</strong></p>
+          <p>Customers can interrupt AI agents, mimicking natural...</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-language" font-size: 24px;"></i>
+          <p><strong>Switching between languages</strong></p>
+          <p>Effortlessly understand and switch between languages...</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-plug" font-size: 24px;"></i>
+          <p><strong>API integration</strong></p>
+          <p>Our solution seamlessly connects with your existing...</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-cloud" font-size: 24px;"></i>
+          <p><strong>Saas or on-premise</strong></p>
+          <p>We offer both cloud-based and on-premise solutions...</p>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-phone-alt" font-size: 24px;"></i>
+          <p><strong>Support webRTC</strong></p>
+          <p>Bring our GenAI agents directly into your application...</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="about">
+
+    <div class="container" style="margin-top: 120px;">
+
+      <div class="about-content">
+
+        <div class="about-image">
+
+          <img src="./media/ceo.jpeg" alt="Trieu Van Anh, Founder">
+
+          <p style="text-align: center"><strong>Trieu Van Anh, Founder</strong></p>
+
+        </div>
+
+        <div class="about-text">
+
+          <p>Customers don't like talking to bot - we get it!
+          <p>
+
+          <p>Understanding this, at the forefront of innovation, our mission is to create human-like GenAI agents that
+            revolutionize how businesses and customers communicate, both through voice and chat. We are dedicated to
+            developing champion AI bots that communicate naturally, and achieve your business KPIs just as effectively
+            as human agents, while liberating your team from routine tasks, allowing them to focus on more complex and
+            creative challenges.
+          <p>
+          <p style="margin: 20px 0;"><strong>An impressive 9x% of customers believe they’re conversing with a human when interacting with our
+              bot!</strong></p>
+          <p>Our key method is to duplicate your top performed human agents to hundreds or thousands of AI bots,
+            ensuring your business targets are consistently met. This approach allows us to quickly and seamlessly
+            replicate our local successes across various markets and languages. Your goals are our priority, and we
+            design our AI agents with your vision in mind.</p>
+
+        </div>
+
+      </div>
+
+      <div class="partner-program">
+
+        <h3>Partner program</h3>
+
+        <p style="margin-bottom: 20px;">Join us in leading the way in distributing cutting-edge technology! With our
+          global expansion, we invite you
+          to be part of our referral and reseller program, complete with comprehensive support throughout the process.
+          Our team is here to provide tailored advice for your action plan, aligned with your specific market needs.
+          Together, we’ll work closely to help you secure those deals. Your success is our success - let’s achieve
+          greatness together!</p>
+
+        <a href="#" class="book-demo-btn" style="background-color: transparent; color:#434343;border:1px solid #434343;">Become our partner</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- <section id="contact">
+    <div class="container">
+      <input type="text" class="name" placeholder="Name">
+      <input type="text" class="email" placeholder="Email">
+      <a href="mailto: hello@aivoiz.com">
+        <button>Send Email</button>
+      </a>
+    </div>
+  </section> -->
+
+  <footer>
+
+    <div class="container">
+      <div class="footer-body">
+
+        <div class="footer-content">
+          <div class="footer_logo"></div>
+
+          <div class="text">
+            <p>Copyright © 2024 aivoiz Co., Ltd.</p>
+            <br>
+            <p>aivoiz Co., Ltd.</p>
+
+            <p>18 Ho Tai Trau Rd., Long Bien, Hanoi, Vietnam</p>
+
+            <a href="mailto:hello@aivoiz.com" style="color: white;">hello@aivoiz.com</a>
+
+          </div>
+
+        </div>
+
+        <div class="icon">
+          <a href="https://www.linkedin.com/company/aivoiz" target="_blank">
+            <img src="./media/linkedin.png" alt="Linkedin">
+          </a>
+          <a href="mailto:hello@aivoiz.com">
+            <img src="./media/email.png" alt="Email" style="width: 40px;">
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <div id="bookDemoModal" class="modal">
+
+    <div class="modal-content">
+
+      <span class="close">&times;</span>
+
+      <h2 class="modal-title">Your AI agents starts here</h2>
+
+      <form target="_blank" action="https://formsubmit.co/hello@aivoiz.com" method="POST" id="bookDemoForm">
+
+        <div class="form-group">
+
+          <input type="text" id="name" name="name" placeholder="Name" required>
+
+        </div>
+
+        <div class="form-group">
+
+
+          <input type="email" id="email" name="email" placeholder="Email" required>
+
+        </div>
+
+        <div class="form-group">
+
+
+          <div style="display: flex; gap: 10px">
+
+            <select id="countryCode" name="countryCode" style="width: 20%;" required>
+
+              <option value="+1" title="United States">US +1</option>
+              <option value="+20" title="Egypt">EG +20</option>
+              <option value="+27" title="South Africa">ZA +27</option>
+              <option value="+31" title="Netherlands">NL +31</option>
+              <option value="+32" title="Belgium">BE +32</option>
+              <option value="+33" title="France">FR +33</option>
+              <option value="+34" title="Spain">ES +34</option>
+              <option value="+41" title="Switzerland">CH +41</option>
+              <option value="+48" title="Poland">PL +48</option>
+              <option value="+49" title="Germany">DE +49</option>
+              <option value="+52" title="Mexico">MX +52</option>
+              <option value="+55" title="Brazil">BR +55</option>
+              <option value="+60" title="Malaysia">MY +60</option>
+              <option value="+61" title="Australia">AU +61</option>
+              <option value="+62" title="Indonesia">ID +62</option>
+              <option value="+63" title="Philippines">PH +63</option>
+              <option value="+64" title="New Zealand">NZ +64</option>
+              <option value="+65" title="Singapore">SG +65</option>
+              <option value="+66" title="Thailand">TH +66</option>
+              <option value="+81" title="Japan">JP +81</option>
+              <option value="+84" title="Vietnam">VN +84</option>
+              <option value="+86" title="China">CN +86</option>
+              <option value="+94" title="Sri Lanka">LK +94</option>
+              <option value="+212" title="Morocco">MA +212</option>
+              <option value="+254" title="Kenya">KE +254</option>
+              <option value="+233" title="Ghana">GH +233</option>
+              <option value="+234" title="Nigeria">NG +234</option>
+              <option value="+255" title="Tanzania">TZ +255</option>
+              <option value="+256" title="Uganda">UG +256</option>
+              <option value="+593" title="Ecuador">EC +593</option>
+              <option value="+598" title="Uruguay">UY +598</option>
+              <option value="+505" title="Nicaragua">NI +505</option>
+              <option value="+509" title="Haiti">HT +509</option>
+              <option value="+44" title="United Kingdom">GB +44</option>
+              <option value="+972" title="Israel">IL +972</option>
+              <option value="+971" title="United Arab Emirates">AE +971</option>
+              <option value="+39" title="Italy">IT +39</option>
+              <option value="+82" title="South Korea">KR +82</option>
+              <option value="+91" title="India">IN +91</option>
+
+              <!-- Add more country codes here -->
+
+            </select>
+
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" style="width: 80%;">
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+
+          <input type="url" id="website" name="website" placeholder="Company Website" required>
+
+        </div>
+
+        <div class="form-group">
+
+
+          <input type="text" id="language" name="language" placeholder="Language" required>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="agents">Number of agents</label>
+
+          <select id="agents" name="agents" required>
+
+            <option value="1-50">1-50 agents</option>
+
+            <option value="50-100">50-100 agents</option>
+
+            <option value="100-300">100-300 agents</option>
+
+            <option value="300+">300+ agents</option>
+
+          </select>
+
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div id="partnerModal" class="modal">
+
+    <div class="modal-content">
+
+      <span class="close">&times;</span>
+
+      <h2 class="modal-title">Become our partner</h2>
+
+      <form target="_blank" action="https://formsubmit.co/hello@aivoiz.com" id="partnerForm">
+
+        <div class="form-group">
+
+          <input type="text" id="partnerName" name="partnerName" placeholder="Name" required>
+
+        </div>
+
+        <div class="form-group">
+
+
+          <input type="email" id="partnerEmail" name="partnerEmail" placeholder="Email" required>
+
+        </div>
+
+        <div class="form-group">
+
+          <div style="display: flex;">
+
+            <select id="partnerCountryCode" name="partnerCountryCode" style="width: 20%;">
+
+              <option value="+1" title="United States">US +1</option>
+              <option value="+20" title="Egypt">EG +20</option>
+              <option value="+27" title="South Africa">ZA +27</option>
+              <option value="+31" title="Netherlands">NL +31</option>
+              <option value="+32" title="Belgium">BE +32</option>
+              <option value="+33" title="France">FR +33</option>
+              <option value="+34" title="Spain">ES +34</option>
+              <option value="+41" title="Switzerland">CH +41</option>
+              <option value="+48" title="Poland">PL +48</option>
+              <option value="+49" title="Germany">DE +49</option>
+              <option value="+52" title="Mexico">MX +52</option>
+              <option value="+55" title="Brazil">BR +55</option>
+              <option value="+60" title="Malaysia">MY +60</option>
+              <option value="+61" title="Australia">AU +61</option>
+              <option value="+62" title="Indonesia">ID +62</option>
+              <option value="+63" title="Philippines">PH +63</option>
+              <option value="+64" title="New Zealand">NZ +64</option>
+              <option value="+65" title="Singapore">SG +65</option>
+              <option value="+66" title="Thailand">TH +66</option>
+              <option value="+81" title="Japan">JP +81</option>
+              <option value="+84" title="Vietnam">VN +84</option>
+              <option value="+86" title="China">CN +86</option>
+              <option value="+94" title="Sri Lanka">LK +94</option>
+              <option value="+212" title="Morocco">MA +212</option>
+              <option value="+254" title="Kenya">KE +254</option>
+              <option value="+233" title="Ghana">GH +233</option>
+              <option value="+234" title="Nigeria">NG +234</option>
+              <option value="+255" title="Tanzania">TZ +255</option>
+              <option value="+256" title="Uganda">UG +256</option>
+              <option value="+593" title="Ecuador">EC +593</option>
+              <option value="+598" title="Uruguay">UY +598</option>
+              <option value="+505" title="Nicaragua">NI +505</option>
+              <option value="+509" title="Haiti">HT +509</option>
+              <option value="+44" title="United Kingdom">GB +44</option>
+              <option value="+972" title="Israel">IL +972</option>
+              <option value="+971" title="United Arab Emirates">AE +971</option>
+              <option value="+39" title="Italy">IT +39</option>
+              <option value="+82" title="South Korea">KR +82</option>
+              <option value="+91" title="India">IN +91</option>
+
+            </select>
+
+            <input type="tel" id="partnerPhone" name="partnerPhone" placeholder="Phone Number" required style="width: 80%;">
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="url" id="partnerWebsite" name="partnerWebsite" placeholder="Company Website" required>
+
+        </div>
+
+        <div class="form-group">
+
+          <input type="text" id="partnerCountry" name="partnerCountry" placeholder="Country" required>
+
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    // Mobile menu toggle
+
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+
+      navLinks.classList.toggle('active');
+
+    });
+
+    // Modal functionality
+
+    const bookDemoBtn = document.querySelector('.book-demo-btn');
+    const bookDemoBtnOPening = document.querySelector('.book-demo-btn-opening');
+
+    const bookDemoModal = document.getElementById('bookDemoModal');
+    const contact = document.getElementById('contact')
+
+    const partnerBtn = document.querySelector('.partner-program .book-demo-btn');
+
+    const partnerModal = document.getElementById('partnerModal');
+
+    const closeBtns = document.querySelectorAll('.close');
+
+    bookDemoBtn.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      bookDemoModal.style.display = 'block';
+
+    });
+
+    contact.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      bookDemoModal.style.display = 'block';
+
+    });
+
+    bookDemoBtnOPening.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      bookDemoModal.style.display = 'block';
+
+    });
+
+    partnerBtn.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      partnerModal.style.display = 'block';
+
+    });
+
+    closeBtns.forEach(btn => {
+
+      btn.addEventListener('click', () => {
+
+        bookDemoModal.style.display = 'none';
+
+        partnerModal.style.display = 'none';
+
+      });
+
+    });
+
+    window.addEventListener('click', (e) => {
+
+      if (e.target == bookDemoModal) {
+
+        bookDemoModal.style.display = 'none';
+
+      }
+
+      if (e.target == partnerModal) {
+
+        partnerModal.style.display = 'none';
+
+      }
+
+    });
+
+    // Experience carousel
+
+    /*const carouselContainer = document.querySelector('.carousel-container');
+
+    const carouselItems = document.querySelectorAll('.carousel-item');
+
+    let currentIndex = 0;
+
+    function showNextItem() {
+
+      currentIndex = (currentIndex + 1) % carouselItems.length;
+
+      updateCarousel();
+
+    }
+
+    function updateCarousel() {
+
+      carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    }
+
+    setInterval(showNextItem, 5000);
+
+    // Case study carousel
+
+    const caseStudyCarousel = document.querySelector('.case-study-carousel');
+
+    let isDown = false;
+
+    let startX;
+
+    let scrollLeft;
+
+    caseStudyCarousel.addEventListener('mousedown', (e) => {
+
+      isDown = true;
+
+      startX = e.pageX - caseStudyCarousel.offsetLeft;
+
+      scrollLeft = caseStudyCarousel.scrollLeft;
+
+    });
+
+    caseStudyCarousel.addEventListener('mouseleave', () => {
+
+      isDown = false;
+
+    });
+
+    caseStudyCarousel.addEventListener('mouseup', () => {
+
+      isDown = false;
+
+    });
+
+    caseStudyCarousel.addEventListener('mousemove', (e) => {
+
+      if (!isDown) return;
+
+      e.preventDefault();
+
+      const x = e.pageX - caseStudyCarousel.offsetLeft;
+
+      const walk = (x - startX) * 3;
+
+      caseStudyCarousel.scrollLeft = scrollLeft - walk;
+
+    }); **/
+
+    function playAudio() {
+      var audio = document.getElementById("audioSample");
+      var playIcon = document.querySelector(".play-icon");
+
+      if (audio.paused) {
+        audio.play();
+        playIcon.innerHTML = '<i class="fa-regular fa-circle-pause" style="color: #434343;"></i>';
+      } else {
+        audio.pause();
+        playIcon.innerHTML = '<i class="fa-regular fa-circle-play" style="color: #434343;"></i>';
+      }
+    }
+
+    const items = document.querySelectorAll('.carousel-item');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+
+    function goToNextSlide() {
+      currentIndex = (currentIndex + 1) % items.length;
+
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      updateDots(currentIndex);
+    }
+
+    function updateDots(index) {
+      const validIndex = index % dots.length;
+      currentIndex = -1;
+
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[validIndex].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        moveToSlide(index);
+      });
+    });
+
+    function moveToSlide(index) {
+      currentIndex = index;
+
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      updateDots(currentIndex);
+    }
+
+    setInterval(goToNextSlide, 5000);
+
+    updateDots(currentIndex);
+
+    const Caseitems = document.querySelectorAll('.Casecarousel-item');
+    const Casedots = document.querySelectorAll('.Casedot');
+    let CasecurrentIndex = 0;
+
+    function goToSlide(index) {
+      CasecurrentIndex = index;
+      const carouselContainer = document.querySelector('.Casecarousel-container');
+      carouselContainer.style.transform = `translateX(-${CasecurrentIndex * 100}%)`;
+      updateCaseDots();
+    }
+
+    function updateCaseDots() {
+      Casedots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === CasecurrentIndex);
+      });
+    }
+
+    Casedots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    updateCaseDots();
+
+    let scrollTimeout;
+
+    document.addEventListener('scroll', () => {
+      document.body.classList.add('scroll-active');
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        document.body.classList.remove('scroll-active');
+      }, 5000);
+    });
+
+
+  </script>
+
+</body>
+
+</html>
