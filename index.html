@@ -108,13 +108,20 @@
     }
 
     .logo {
-      background-image: url("./media/logo.png");
-      background-size: contain;
-      background-repeat: no-repeat;
       width: 100px;
       height: 60px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    
+    .logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
 
     .nav-links {
 
@@ -191,16 +198,23 @@
     }
 
     .home-image {
-      background-image: url('./media/anh1.jpg');
-      background-size: cover;
-      border-radius: 30px;
-      background-repeat: no-repeat;
-      background-position: center;
       width: 100%;
       max-width: 600px;
       height: 395px;
+      border-radius: 30px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    
+    .home-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit; /* Áp dụng bo tròn giống như div */
+    }
+    
 
     .home-title {
 
@@ -675,14 +689,20 @@
     }
 
     .footer_logo {
-      background-image: url("./media/logo_white.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
       width: 80px;
       height: 60px;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    
+    .footer_logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
 
     .footer-content {
       font-weight: bold;
@@ -1098,7 +1118,9 @@
 
     <div class="nav-container">
 
-      <div class="logo"></div>
+      <div class="logo">\
+        <img src="./media/logo.png" alt="Aivoiz">
+      </div>
 
       <div class="menu-toggle">☰</div>
 
@@ -1142,14 +1164,16 @@
           </span>
           <span>Dialogue sample</span>
           <audio id="audioSample" style="display:none;" controls>
-            <source src="./media/audio 1 EN.mp3" type="audio/wav">
+            <source src="./media/english.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio>
           <a href="#" class="book-demo-btn-opening" style="margin-left: 20px;">Book a demo</a>
         </div>
       </div>
 
-      <div class="home-image"></div>
+      <div class="home-image">
+        <img src="./media/anh1.png" alt="Aivoiz">
+      </div>
     </div>
 
 
@@ -1254,7 +1278,7 @@
       <div class="Casecarousel-container">
         <!-- Case Study 1 -->
         <div class="Casecarousel-item">
-          <img src="./media/anh2.jpg" alt="Demo 1">
+          <img src="./media/anh2.png" alt="Demo 1">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>24/7 Inbound Customer Support</strong></p>
             <p><span style="font-weight: bold">Client</span>: Government Water Company</p>
@@ -1262,7 +1286,7 @@
             <p>Support line assists customers with inquiries about procedures, complaints, and more, providing reliable
               assistance around the clock.</p>
             <audio id="audioSample" controls>
-              <source src="./media/vietnamese.wav" type="audio/wav">
+              <source src="./media/vietnamese.mp3" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -1270,7 +1294,7 @@
 
         <!-- Case Study 2 -->
         <div class="Casecarousel-item">
-          <img src="./media/anh3.jpg" alt="Demo 2">
+          <img src="./media/anh3.png" alt="Demo 2">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>Outbound Calls for Loan Packages</strong></p>
             <p><span style="font-weight: bold">Client</span>: Financing Company</p>
@@ -1278,7 +1302,7 @@
             <p>Reaching out to potential customers to discuss available loan packages, ensuring a seamless experience.
             </p>
             <audio id="audioSample" controls>
-              <source src="./media/english.mp3" type="audio/wav">
+              <source src="./media/english.mp3" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -1286,7 +1310,7 @@
 
         <!-- Case Study 3 -->
         <div class="Casecarousel-item">
-          <img src="./media/anh4.JPG" alt="Demo 3">
+          <img src="./media/anh4.png" alt="Demo 3">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>Outbound Promotion Campaigns</strong></p>
             <p><span style="font-weight: bold">Client</span>: Delivery Company</p>
@@ -1294,7 +1318,7 @@
             <p>Engaging existing customers with enticing discount offers, driving increased delivery orders and
               enhancing customer loyalty.</p>
             <audio id="audioSample" controls>
-              <source src="./media/hindi.wav" type="audio/wav">
+              <source src="./media/hindi.mp3" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -1302,7 +1326,7 @@
 
         <!-- Case Study 4 -->
         <div class="Casecarousel-item">
-          <img src="./media/anh5" alt="Demo 4">
+          <img src="./media/anh5.png" alt="Demo 4">
           <div class="case-study-details">
             <p style="color: #ff9900;"><strong>Inbound Information Retrieval for Sales Follow-Up</strong></p>
             <p><span style="font-weight: bold">Client</span>: Insurance Company</p>
@@ -1310,7 +1334,7 @@
             <p>Inbound calls to gather customer information, enabling sales representatives to provide tailored
               consultations promptly.</p>
             <audio id="audioSample" controls>
-              <source src="./media/japanese.wav" type="audio/wav">
+              <source src="./media/japanese.mp3" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -1458,7 +1482,9 @@
       <div class="footer-body">
 
         <div class="footer-content">
-          <div class="footer_logo"></div>
+          <div class="footer_logo">
+            <img src="./media/logo_white.png" alt="Aivoiz">
+          </div>
 
           <div class="text">
             <p>Copyright © 2024 aivoiz Co., Ltd.</p>
