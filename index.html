@@ -170,7 +170,7 @@
 
       text-decoration: none;
 
-      font-size: 15px;
+      font-size: 13.0pt;
 
 
     }
@@ -207,6 +207,7 @@
       align-items: center;
       padding: 0;
       gap: 97px;
+      padding: 0 15px;
     }
 
     .home-image {
@@ -316,7 +317,7 @@
       align-items: center;
       text-align: center;
       flex: 1;
-      
+
       border: 1px solid #e0e0e0;
       border-radius: 12px;
 
@@ -401,7 +402,7 @@
     .experience-carousel {
       flex: 1;
       position: relative;
-      height: 140px;
+      height: 160px;
       overflow: hidden;
       width: 470px;
       align-items: end;
@@ -613,27 +614,20 @@
 
     #about {
       padding: 50px 20px;
-      /* Màu nền nhẹ để phân biệt với các phần khác */
       font-family: 'Arial', sans-serif;
       color: #333;
-      /* Màu chữ dễ đọc */
     }
 
     .about-content {
       display: flex;
       align-items: flex-start;
-      /* Căn chỉnh nội dung theo đầu dòng */
       gap: 40px;
-      /* Khoảng cách giữa ảnh và văn bản */
       flex-wrap: wrap;
-      /* Đảm bảo hiển thị tốt trên màn hình nhỏ */
     }
 
     .about-image {
       width: 30%;
-      /* Giới hạn chiều rộng của ảnh */
       text-align: center;
-      /* Căn giữa văn bản dưới ảnh */
     }
 
     .about-image img {
@@ -666,7 +660,6 @@
 
     .partner-program {
       margin-top: 40px;
-      padding: 20px;
       border-radius: 10px;
     }
 
@@ -690,6 +683,7 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s ease;
+      font-size: 13.0pt;
     }
 
     .book-demo-btn:hover {
@@ -922,7 +916,7 @@
 
     /* Responsive Design */
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
       * {
         text-align: start;
       }
@@ -1002,25 +996,27 @@
       .experience-carousel {
         padding-bottom: 10px;
       }
-
-      .about-content {
-        flex-direction: column;
-      }
-
+      
       .section-title {
         margin-top: 10%;
       }
+      
+      .about-content {
+        flex-direction: row;
+        align-items: center;
+      }
+
 
       .about-text {
         padding-left: 0px;
       }
 
+      .experience-carousel {
+        height: 140px;
+      }
+
       .experience-text,
-
       .experience-carousel,
-
-      .about-image,
-
       .about-text {
 
         width: 100%;
@@ -1029,6 +1025,10 @@
 
       .about .container {
         margin-top: 10%;
+      }
+
+      .about-image {
+        width: 66%;
       }
 
       .Casecarousel-item {
@@ -1083,11 +1083,12 @@
         gap: 20px;
       }
 
+
       /* General styles */
       footer {
         background-color: #ff9900;
         color: white;
-        padding: 20px 0;
+        padding: 20px 20px;
       }
 
       .container {
@@ -1141,7 +1142,7 @@
       }
 
       .footer-content {
-        align-items: center;
+        
       }
 
       .footer-content .text {
@@ -1153,11 +1154,11 @@
       }
 
       .stats {
-        flex-direction: column; 
-        align-items: center; 
-        gap: 20px; 
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
       }
-    
+
       .stat-item {
         width: 90%;
       }
@@ -1242,7 +1243,7 @@
       <h2 class="section-title" style="font-size: 36.0pt;">A game changer</h2>
 
       <h3 class="section-subtitle">for your cusomer service</h3>
-
+      <p style="margin: 13px;"></p>
       <p>Our advanced technology enables seamless communication in voice and chat, 24/7, across all platforms - whether
         it’s contact centers, websites, or apps. Enhance your ability to reach and support customers quickly and
         efficiently, all while significantly reducing costs.</p>
@@ -1411,8 +1412,9 @@
 
   <section id="features">
     <div class="container">
-      <h2 class="section-title" style="margin-bottom: 50px; font-size: 36.0pt;">
-        <p style="color: #434343; font-weight: normal;font-size:26px;">What makes</p> our product stand out
+      <h2 class="section-title" style="margin-bottom: 50px; font-size: 36.0pt; line-height: 1.2;">
+        <p style="color: #434343; font-weight: normal; font-size:26px; margin-bottom: 5px;">What makes</p>
+        our product stand out
       </h2>
       <div class="features-grid">
 
@@ -1475,10 +1477,10 @@
 
 
   <section id="about">
-    <p class="section-title" style="font-size: 26px; color: #434343;">
-      Our Story
-    </p>
     <div class="container" style="margin-top: 40px;">
+      <p class="section-title" style="font-size: 20.0pt; color: #434343;">
+        Our Story
+      </p>
 
       <div class="about-content">
 
@@ -1964,82 +1966,136 @@
 
     const items = document.querySelectorAll('.carousel-item');
     const dots = document.querySelectorAll('.dot');
+    const carouselContainer = document.querySelector('.carousel-container');
     let currentIndex = 0;
     let intervalId;
-
+    
+    var startX = 0;
+    var endX = 0;
+    
     function goToNextSlide() {
       currentIndex = (currentIndex + 1) % items.length;
       updateCarousel();
     }
-
+    
     function updateCarousel() {
-      const carouselContainer = document.querySelector('.carousel-container');
       carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-
+    
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentIndex);
       });
     }
-
+    
     function moveToSlide(index) {
       currentIndex = index;
       updateCarousel();
       restartAutoSlide();
     }
-
+    
     function startAutoSlide() {
-      intervalId = setInterval(goToNextSlide, 1000000);
+      intervalId = setInterval(goToNextSlide, 5000);
     }
-
+    
     function restartAutoSlide() {
       clearInterval(intervalId);
       startAutoSlide();
     }
-
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+    
+    carouselContainer.addEventListener('touchmove', (e) => {
+      endX = e.touches[0].clientX; 
+    });
+    
+    carouselContainer.addEventListener('touchend', () => {
+      if (startX - endX > 50) {
+        if (currentIndex < items.length - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0; 
+        }
+      } else if (endX - startX > 50) {
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = items.length - 1; 
+        }
+      }
+      updateCarousel();
+      restartAutoSlide();
+    });
+    
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => moveToSlide(index));
     });
-
+    
     startAutoSlide();
     updateCarousel();
-
+    
 
     // Case study carousel
 
     const Caseitems = document.querySelectorAll('.Casecarousel-item');
     const Casedots = document.querySelectorAll('.Casedot');
+    const CasecarouselContainer = document.querySelector('.Casecarousel-container');
+    
     let CasecurrentIndex = 0;
-
+    let CasestartX = 0;
+    let CaseendX = 0;
+    
     function CasegoToSlide(index) {
       CasecurrentIndex = index;
-      const carouselContainer = document.querySelector('.Casecarousel-container');
-      carouselContainer.style.transform = `translateX(-${CasecurrentIndex * 100}%)`;
+      CasecarouselContainer.style.transform = `translateX(-${CasecurrentIndex * 100}%)`;
       updateCaseDots();
     }
-
+    
     function updateCaseDots() {
       Casedots.forEach((dot, index) => {
         dot.classList.toggle('active', index === CasecurrentIndex);
       });
     }
-
+    
+    CasecarouselContainer.addEventListener('touchstart', (e) => {
+      CasestartX = e.touches[0].clientX;
+    });
+    
+    CasecarouselContainer.addEventListener('touchmove', (e) => {
+      CaseendX = e.touches[0].clientX;
+    });
+    
+    CasecarouselContainer.addEventListener('touchend', () => {
+      if (CasestartX - CaseendX > 50) {
+        if (CasecurrentIndex < Caseitems.length - 1) {
+          CasegoToSlide(CasecurrentIndex + 1);
+        }
+      } else if (CaseendX - CasestartX > 50) {
+        if (CasecurrentIndex > 0) {
+          CasegoToSlide(CasecurrentIndex - 1);
+        }
+      }
+      CasestartX = 0;
+      CaseendX = 0;
+    });
+    
     Casedots.forEach((dot, index) => {
       dot.addEventListener('click', () => CasegoToSlide(index));
     });
-
+    
     updateCaseDots();
-
+    
     let scrollTimeout;
-
+    
     document.addEventListener('scroll', () => {
       document.body.classList.add('scroll-active');
-
+    
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         document.body.classList.remove('scroll-active');
       }, 1000);
     });
-
+    
 
   </script>
 
