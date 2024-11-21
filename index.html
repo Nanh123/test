@@ -128,7 +128,7 @@
     }
 
     .logo a img {
-      max-width: 67%;
+      max-width: 80%;
       max-height: 100%;
       object-fit: contain;
     }
@@ -196,7 +196,7 @@
     }
 
     .home-content {
-      width: 100%;
+      width: 105%;
       padding-right: 20px;
     }
 
@@ -339,7 +339,7 @@
 
     .stat-number {
 
-      font-size: 26px;
+      font-size: 24.0pt;
 
       font-weight: bold;
 
@@ -462,11 +462,6 @@
 
 
     /* Case Study Section */
-
-    #case-study {
-      padding: 50px 0;
-    }
-
     #case-study h3 {
       font-weight: normal;
       font-size: 26px;
@@ -495,7 +490,6 @@
 
     .Casecarousel-item {
       min-width: 100%;
-      padding: 20px;
       box-sizing: border-box;
       display: flex;
       flex-direction: row;
@@ -671,7 +665,7 @@
 
     .partner-program p {
       margin-bottom: 20px;
-      font-size: 16px;
+      font-size: 13.0pt;
       line-height: 1.8;
     }
 
@@ -918,7 +912,7 @@
 
     @media (max-width: 820px) {
       * {
-        text-align: start;
+        text-align:justify;
       } 
 
       body {
@@ -1019,6 +1013,7 @@
       
       .section-title {
         margin-top: 10%;
+        text-align: start;
       }
       
       .about-content {
@@ -1125,7 +1120,7 @@
         background-color: #ff9900;
         color: white;
         padding: 20px 20px;
-        margin-top: 10px;
+        margin-top: 10%;
       }
 
       .container {
@@ -1230,7 +1225,8 @@
 
         <a href="#about">About</a>
 
-        <a href="#contact" id="contact">Contact</a>
+        <!-- <a href="#contact" id="contact">Contact</a> -->
+         <a href="mailto:hello@aivoiz.com" id="contact">Contact</a>
 
         <a href="#" class="book-demo-btn">Book a demo</a>
 
@@ -1515,7 +1511,7 @@
 
   <section id="about">
     <div class="container" style="margin-top: 40px;">
-      <p class="section-title" style="font-size: 20.0pt; color: #434343;">
+      <p class="section-title" style="font-size: 20.0pt; color: #434343; font-weight: normal;">
         Our Story
       </p>
 
@@ -1738,7 +1734,7 @@
 
       <span class="close">&times;</span>
 
-      <h2 class="modal-title">Become our partner</h2>
+      <h2 class="modal-title" style="color: #434343;">Become our partner</h2>
 
       <form target="_blank" action="https://formsubmit.co/hello@aivoiz.com" id="partnerForm">
 
@@ -1850,7 +1846,7 @@
     const bookDemoBtnOPening = document.querySelector('.book-demo-btn-opening');
 
     const bookDemoModal = document.getElementById('bookDemoModal');
-    const contact = document.getElementById('contact')
+    /*const contact = document.getElementById('contact')*/
 
     const partnerBtn = document.querySelector('.partner-program .book-demo-btn');
 
@@ -1866,13 +1862,13 @@
 
     });
 
-    contact.addEventListener('click', (e) => {
+/*    contact.addEventListener('click', (e) => {
 
       e.preventDefault();
 
       bookDemoModal.style.display = 'block';
 
-    });
+    });*/
 
     bookDemoBtnOPening.addEventListener('click', (e) => {
 
