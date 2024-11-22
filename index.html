@@ -1061,20 +1061,26 @@
       }
 
       .Casecarousel-item {
-        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
+        width: 100%;
+        height: auto;
         box-sizing: border-box;
         overflow: hidden;
       }
+
 
       .Casecarousel-item img {
         max-width: 100%;
         height: auto;
         object-fit: cover;
+        display: block;
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
       }
+
 
 
       .features-grid {
