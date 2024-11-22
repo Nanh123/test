@@ -433,7 +433,7 @@
 
 
     /* Case Study Section */
-    #case-study .section-title{
+    #case-study .section-title {
       margin-top: 70px;
     }
 
@@ -887,9 +887,9 @@
 
     @media (max-width: 820px) {
       * {
-        text-align:justify;
+        text-align: justify;
         font-family: 'roboto', sans-serif;
-      } 
+      }
 
       body {
         display: flex;
@@ -979,12 +979,12 @@
       .experience-carousel {
         padding-bottom: 10px;
       }
-      
+
       .section-title {
         margin-top: 10%;
         text-align: start;
       }
-      
+
       .about-content {
         flex-direction: column;
         align-items: center;
@@ -1037,6 +1037,7 @@
       #case-study .section-title {
         margin: 0;
       }
+
       .case-study-image,
       .case-study-content {
         width: 100%;
@@ -1059,22 +1060,22 @@
         padding-bottom: 10%;
       }
 
-      .Casecarousel-item img {
-        max-width: 100%;
-        max-height: 100%;
-        overflow: hidden;
-        object-fit: cover;
-        display: block;
-      }      
-
       .Casecarousel-item {
-        max-width: 100%;
-        max-height: auto;
-        padding-left: 0;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box;
+        overflow: hidden;
       }
+
+      .Casecarousel-item img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        -webkit-backface-visibility: hidden;
+      }
+
 
       .features-grid {
         display: grid;
@@ -1146,9 +1147,7 @@
         text-align: center;
       }
 
-      .footer-content {
-        
-      }
+      .footer-content {}
 
       .footer-content .text {
         margin-top: 5px;
@@ -1199,7 +1198,7 @@
         <a href="#about">About</a>
 
         <!-- <a href="#contact" id="contact">Contact</a> -->
-         <a href="mailto:hello@aivoiz.com" id="contact">Contact</a>
+        <a href="mailto:hello@aivoiz.com" id="contact">Contact</a>
 
         <a href="#" class="book-demo-btn">Book a demo</a>
 
@@ -1251,7 +1250,8 @@
 
       <h3 class="section-subtitle">for your cusomer service</h3>
       <p style="margin: 13px;"></p>
-      <p class="section-text">Our advanced technology enables seamless communication in voice and chat, 24/7, across all platforms - whether
+      <p class="section-text">Our advanced technology enables seamless communication in voice and chat, 24/7, across all
+        platforms - whether
         it’s contact centers, websites, or apps. Enhance your ability to reach and support customers quickly and
         efficiently, all while significantly reducing costs.</p>
 
@@ -1826,13 +1826,13 @@
 
     });
 
-/*    contact.addEventListener('click', (e) => {
-
-      e.preventDefault();
-
-      bookDemoModal.style.display = 'block';
-
-    });*/
+    /*    contact.addEventListener('click', (e) => {
+    
+          e.preventDefault();
+    
+          bookDemoModal.style.display = 'block';
+    
+        });*/
 
     bookDemoBtnOPening.addEventListener('click', (e) => {
 
@@ -1966,102 +1966,102 @@
     const carouselContainer = document.querySelector('.carousel-container');
     let currentIndex = 0;
     let intervalId;
-    
+
     var startX = 0;
     var endX = 0;
-    
+
     function goToNextSlide() {
       currentIndex = (currentIndex + 1) % items.length;
       updateCarousel();
     }
-    
+
     function updateCarousel() {
       carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    
+
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentIndex);
       });
     }
-    
+
     function moveToSlide(index) {
       currentIndex = index;
       updateCarousel();
       restartAutoSlide();
     }
-    
+
     function startAutoSlide() {
       intervalId = setInterval(goToNextSlide, 5000);
     }
-    
+
     function restartAutoSlide() {
       clearInterval(intervalId);
       startAutoSlide();
     }
-    
+
     carouselContainer.addEventListener('touchstart', (e) => {
       startX = e.touches[0].clientX;
     });
-    
+
     carouselContainer.addEventListener('touchmove', (e) => {
-      endX = e.touches[0].clientX; 
+      endX = e.touches[0].clientX;
     });
-    
+
     carouselContainer.addEventListener('touchend', () => {
       if (startX - endX > 50) {
         if (currentIndex < items.length - 1) {
           currentIndex++;
         } else {
-          currentIndex = 0; 
+          currentIndex = 0;
         }
       } else if (endX - startX > 50) {
         if (currentIndex > 0) {
           currentIndex--;
         } else {
-          currentIndex = items.length - 1; 
+          currentIndex = items.length - 1;
         }
       }
       updateCarousel();
       restartAutoSlide();
     });
-    
+
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => moveToSlide(index));
     });
-    
+
     startAutoSlide();
     updateCarousel();
-    
+
 
     // Case study carousel
 
     const Caseitems = document.querySelectorAll('.Casecarousel-item');
     const Casedots = document.querySelectorAll('.Casedot');
     const CasecarouselContainer = document.querySelector('.Casecarousel-container');
-    
+
     let CasecurrentIndex = 0;
     let CasestartX = 0;
     let CaseendX = 0;
-    
+
     function CasegoToSlide(index) {
       CasecurrentIndex = index;
       CasecarouselContainer.style.transform = `translateX(-${CasecurrentIndex * 100}%)`;
       updateCaseDots();
     }
-    
+
     function updateCaseDots() {
       Casedots.forEach((dot, index) => {
         dot.classList.toggle('active', index === CasecurrentIndex);
       });
     }
-    
+
     CasecarouselContainer.addEventListener('touchstart', (e) => {
       CasestartX = e.touches[0].clientX;
     });
-    
+
     CasecarouselContainer.addEventListener('touchmove', (e) => {
       CaseendX = e.touches[0].clientX;
     });
-    
+
     CasecarouselContainer.addEventListener('touchend', () => {
       if (CasestartX - CaseendX > 50) {
         if (CasecurrentIndex < Caseitems.length - 1) {
@@ -2075,24 +2075,24 @@
       CasestartX = 0;
       CaseendX = 0;
     });
-    
+
     Casedots.forEach((dot, index) => {
       dot.addEventListener('click', () => CasegoToSlide(index));
     });
-    
+
     updateCaseDots();
-    
+
     let scrollTimeout;
-    
+
     document.addEventListener('scroll', () => {
       document.body.classList.add('scroll-active');
-    
+
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         document.body.classList.remove('scroll-active');
       }, 1000);
     });
-    
+
 
   </script>
 
